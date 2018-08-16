@@ -1,0 +1,29 @@
+<template>
+    <div>
+        <h1>home</h1>
+        <div v-if="user">{{user.name}}
+          <el-button type="primary"  @click="logout()">注销</el-button>
+        </div>
+        <el-button v-else type="success" @click="login()">点击登录</el-button>
+    </div>
+</template>
+
+<script>
+    export default {
+        methods: {
+            login () {
+                this.$router.replace('/login')
+            },
+            logout(){
+              this.$store.dispatch('logout').then(()=>{
+                this.$router.replace('/')
+              })
+            }
+        },
+        computed:{
+          user(){
+            return this.$store.state.user
+          }
+        }
+    }
+</script>

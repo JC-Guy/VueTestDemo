@@ -8,6 +8,7 @@ import Vuetify from 'vuetify'
 import './element-ui'
 //导入vue-resource，就会在vue对象上绑定一个$http对象，就可以使用ajax方法
 import vueResoure from 'vue-resource'
+import './axios'
 Vue.use(vueResoure)
 
 

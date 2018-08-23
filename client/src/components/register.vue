@@ -2,13 +2,13 @@
   <el-row type="flex" justify="center">
     <el-form ref="registerForm" :model="user" :rules="rules" status-icon label-width="80px">
       <el-form-item label="用户名" prop="username">
-        <el-input v-model="user.username"></el-input>
+        <el-input v-model="user.username" placeholder="请输入5到10位"></el-input>
       </el-form-item>
-      <el-form-item label="密码" status-icon prop="password">
-        <el-input v-model="user.password" type="password"></el-input>
+      <el-form-item label="密码" status-icon prop="password" >
+        <el-input v-model="user.password" type="password" placeholder="请输入6到15位"></el-input>
       </el-form-item>
-      <el-form-item label="确认密码" status-icon prop="conform">
-        <el-input v-model="user.conform" type="password"></el-input>
+      <el-form-item label="确认密码" status-icon prop="conform" >
+        <el-input v-model="user.conform" type="password" placeholder="请确认密码"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="success" icon="el-icon-upload" @click="register">完成</el-button>
@@ -29,6 +29,9 @@ export default {
       }
     }
   },
+  mounted(){
+  
+  },
   methods: {
     register() {
       this.$refs.registerForm.validate((value) => {
@@ -46,26 +49,38 @@ export default {
                     showClose:true
                   })
                 }else{
-                  //两次密码一致
-                  if(this.user.password!=this.user.conform){
-                    this.$store.state.doneOrNot=0
-                    this.$message({
-                    type:"error",
-                    message:"两次密码不相同，请重新输入",
-                    showClose:true
-                  })
-                  }else{
+                  if(res.data.warn_username_length){
                     this.$notify({
-                    type: 'success',
-                    message: "注册成功," + "用户名:" + this.user.username + "," + "密码:" + this.user.password,
-                    duration: 3000
+                      type:"error",
+                      message:"请输入5到10位用户名",
+                      showClose:false
                     })
-                    this.$router.replace('/')
-                    this.$store.state.doneOrNot=1
-                    console.log("前端:注册成功")
-                    console.log(res.data)
+                  }else if (res.data.warn_password_length){
+                      this.$notify({
+                        type:"error",
+                        message:"请输入6到15位密码",
+                        showClose:false
+                    })
+                  }else{
+                    if(this.user.password!=this.user.conform){
+                      this.$store.state.doneOrNot=0
+                      this.$message({
+                        type:"error",
+                        message:"两次密码不相同，请重新输入",
+                        showClose:true
+                      })
+                    }else{
+                      this.$notify({
+                        type: 'success',
+                        message: "注册成功," + "用户名:" + this.user.username + "," + "密码:" + this.user.password,
+                        duration: 3000
+                      })
+                      this.$router.replace('/')
+                      this.$store.state.doneOrNot=1
+                      console.log("前端:注册成功")
+                      console.log(res.data)
+                    }
                   }
-                 
                 }               
               })
               

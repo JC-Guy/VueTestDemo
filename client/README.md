@@ -1,20 +1,21 @@
 # client
 
-登陆界面（目前只能登陆，与数据库匹配）
+> A Vue.js project
 
-# build
+## Build Setup
 
 ``` bash
-git clone 
-项目根目录npm install 
-cd src/server npm install 
-mongod --dbpath D:\db
-在server下node app.js
-根目录下npm run dev
+# install dependencies
+npm install
 
-具体见博客：http://localhost:8081/wordpress/2018/08/17/vueexpressmongodb%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2/
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
 ```
-# next todo
-完成注册功能，就可以封装成模块以后项目中使用
 
-
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

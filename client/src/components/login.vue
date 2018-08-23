@@ -2,7 +2,7 @@
   <el-row type="flex" justify="center">
     <el-form ref="loginForm" :model="user" :rules="rules" status-icon label-width="80px">
       <el-form-item label="用户名" prop="username">
-        <el-input v-model="user.username"></el-input>
+        <el-input v-model="user.username" ></el-input>
       </el-form-item>
       <el-form-item label="密码" status-icon prop="password">
         <el-input v-model="user.password" type="password"></el-input>
@@ -48,9 +48,11 @@ export default {
                   duration:3000
                 })
               this.$router.replace('/')
+              this.$store.state.doneOrNot=1
               console.log("成功登陆")
               })
             }else{
+              this.$store.state.doneOrNot=0
               this.$message({
                 type:'error',
                 message:'用户名或密码错误',
@@ -58,15 +60,16 @@ export default {
               })
             }
           }).catch((err)=>{
-            //在判断登陆的逻辑中任何地方出错会立即转到这里
-            console.log("出错")
-            this.$message({
+              console.log("出错")
+              this.$store.state.doneOrNot=0
+              this.$message({
               type:'error',
               message:"网络错误，请重试",
               showClose:true
             })
           })
         } else{
+          this.$store.state.doneOrNot=0
           return false
           }
       })

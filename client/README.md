@@ -6,7 +6,7 @@
 
 ``` bash
 
-down and npm install 
+down and npm install : client install at root while cd/server and install server config
 
 client run at port 8080
 

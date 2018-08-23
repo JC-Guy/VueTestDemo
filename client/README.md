@@ -1,21 +1,21 @@
 # client
 
-> A Vue.js project
+> A Vue.js project : Vue + nodejs express + mongodb + axios
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+down and npm install 
 
-# build for production with minification
-npm run build
+client run at port 8080
 
-# build for production and view the bundle analyzer report
-npm run build --report
+server run at port 3001
+
+db run at port 27017
+
+tow pro for Front end separation
+
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

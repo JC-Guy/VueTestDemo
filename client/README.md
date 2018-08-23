@@ -14,7 +14,7 @@ server run at port 3001
 
 db run at port 27017
 
-tow pro for Front end separation
+two pro for Front end separation
 
 ```
 
